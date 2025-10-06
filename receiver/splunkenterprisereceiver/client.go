@@ -121,7 +121,7 @@ func (c *splunkEntClient) createRequest(eptType string, sr *searchResponse) (req
 
 		return req, nil
 	}
-	path := fmt.Sprintf("/services/search/jobs/%s/results", *sr.Jobid)
+	path := fmt.Sprintf("/services/search/jobs/%s/results?count=0", *sr.Jobid)
 	url, _ := url.JoinPath(c.clients[eptType].endpoint.String(), path)
 
 	req, err = http.NewRequestWithContext(ctx, http.MethodGet, url, http.NoBody)
